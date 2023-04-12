@@ -6,7 +6,7 @@
             "type": "income",
             "category": "Venda",
             "price": "10000",
-            "createdAt": "2021-02-12T19:00:00.000Z"
+            "createdAt": "2023-04-09T02:13:25.018Z"
         },
         {
             "id": "2",
@@ -14,7 +14,7 @@
             "type": "outcome",
             "category": "Alimentação",
             "price": "50",
-            "createdAt": "2023-02-12T19:00:00.000Z"
+            "createdAt": "2023-04-11T02:13:25.018Z"
         },
         {
             "id": "3",
@@ -22,7 +22,7 @@
             "type": "outcome",
             "category": "Esudantil",
             "price": "1500",
-            "createdAt": "2023-4-11T19:00:00.000Z"
+            "createdAt": "2023-04-13T02:13:25.018Z"
         }
     ]
 }

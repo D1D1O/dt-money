@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Summary } from "../../Summary";
+import { Summary } from "../../components/Summary";
 import { Header } from "../../components/Header";
 import { SearchForm } from "./componentes/SearchForm";
 import { PriceHighlight, TransaciotionsContainer, TransactionsTable } from "./styles";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { dateFormater, priceFormater } from "../../utils/formatter";
 
 
 export function Transaciotion() {
@@ -29,11 +30,12 @@ const {transactions} =  useContext(TransactionsContext);
                     <td width="50%"> {transaction.description} </td>
                     <td>
                       <PriceHighlight variant={transaction.type}>
-                        R$ {transaction.price}
+                        {transaction.type === 'outcome' && '-'}
+                        {priceFormater.format(transaction.price)}
                       </PriceHighlight>
                     </td>
                     <td>{transaction.category} </td>
-                    <td>{transaction.createdAt }</td>
+                    <td>{dateFormater.format(new Date(transaction.createdAt)) }</td>
                   </tr>    
                 )
               })}
