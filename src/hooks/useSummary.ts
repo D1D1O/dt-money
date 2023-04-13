@@ -7,10 +7,10 @@ export function useSummary() {
     const summary = transactions.reduce((acc, transaction) => {
 
         if(transaction.type === 'income'){
-            acc.income += parseInt(transaction.price.toString());
+            acc.income += transaction.price; //parseInt(transaction.price.toString());
             acc.total += transaction.price;
         }else{
-            acc.outcome +=  parseInt(transaction.price.toString());
+            acc.outcome +=  transaction.price; // parseInt(transaction.price.toString());
             acc.total -= transaction.price;
         }
 
