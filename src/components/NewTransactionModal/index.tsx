@@ -6,8 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
 import { Controller } from 'react-hook-form';
 import { api } from '../../lib/axios';
-import { useContext } from 'react';
 import { TransactionsContext } from '../../contexts/TransactionsContext';
+import { useContextSelector } from 'use-context-selector';
 
 
 const newTrasactionFormSchema = z.object({
@@ -20,7 +20,9 @@ type newTransactionInput = z.infer<typeof newTrasactionFormSchema>;
 
 export function NewTransactionModal() {
 
-    const {createTransaction } = useContext(TransactionsContext);
+    const createTransaction = useContextSelector(TransactionsContext,
+        (context) => context.createTransaction
+    );
 
     const {
         control,
@@ -33,7 +35,7 @@ export function NewTransactionModal() {
     })
 
     async function handleCreateNewTransaction(data: newTransactionInput) {
-        const {category,description,price,type}  = data;
+        const { category, description, price, type } = data;
 
         await createTransaction({
             description,
@@ -75,7 +77,7 @@ export function NewTransactionModal() {
                     <Controller
                         control={control}
                         name="type"
-                        render={({field}) => {
+                        render={({ field }) => {
                             return (
                                 <TransactionType onValueChange={field.onChange} value={field.value}>
                                     <TransactionTypeButton variant='income' value='income'>
